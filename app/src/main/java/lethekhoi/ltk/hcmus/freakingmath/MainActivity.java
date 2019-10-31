@@ -30,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
                         //Fragment
         //this nó tượng trưng cho thằng gọi nó,
         //thấy context=> truyền tên màn hình vào
-        //cach xem tham so trong method: ctrl+p
+        //cach xem tham so trong method: ctrl+pgit
         //cách gợi ý code : ctrl+ space
+        int number= random.nextInt(5);
        Toast.makeText(this,String.valueOf(number), Toast.LENGTH_SHORT).show();
 
     }
