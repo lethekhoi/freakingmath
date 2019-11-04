@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int mRandomSt1 = 0;
     int mRandomSt2 = 0;
     int mIndex = 0;
-    int mKetQua = 0;
+    boolean kiemtra = true;
     boolean mIsTrue = true;
 
     @Override
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTxtSothu1 = findViewById(R.id.textviewSothu1);
         mTxtSothu2 = findViewById(R.id.textviewSothu2);
         mTxtPhepTinh = findViewById(R.id.textviewPheptinh);
-        mTxtKetQua = findViewById(R.id.textviewKetqua);
+
         mImgDung = findViewById(R.id.imagebuttonTrue);
         mImgSai = findViewById(R.id.imagebuttonFalse);
         mRandom = new Random();
@@ -56,35 +56,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void handleRandom() {
         mRandomSt1 = mRandom.nextInt(9) + 1;
         mRandomSt2 = mRandom.nextInt(9) + 1;
-        mIndex = mRandom.nextInt(3);
+        mIndex = mRandom.nextInt(2);
         mIsTrue = mRandom.nextBoolean();
 
 
         switch (mIndex) {
 
             case 0:
-                mKetQua = mRandomSt1 + mRandomSt2;
-                mTxtPhepTinh.setText("+");
+                mTxtPhepTinh.setText("<");
+                kiemtra =( mRandomSt1 < mRandomSt2) ? true : false;
                 break;
             case 1:
-                mKetQua = mRandomSt1 - mRandomSt2;
-                mTxtPhepTinh.setText("-");
-                break;
-            case 2:
-                mKetQua = mRandomSt1 / mRandomSt2;
-                mTxtPhepTinh.setText("/");
+
+                mTxtPhepTinh.setText(">");
+                kiemtra = mRandomSt1 > mRandomSt2 ? true : false;
                 break;
             default:
-                mKetQua = mRandomSt1 * mRandomSt2;
-                mTxtPhepTinh.setText("*");
+                mTxtPhepTinh.setText("=");
+                kiemtra = mRandomSt1 == mRandomSt2 ? true : false;
                 break;
+
         }
-        if (!mIsTrue) {
-            mKetQua += mRandom.nextInt(5);
-        }
+
         mTxtSothu1.setText(mRandomSt1 + "");
         mTxtSothu2.setText(mRandomSt2 + "");
-        mTxtKetQua.setText("= " + mKetQua + "");
 
 
     }
@@ -99,13 +94,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String thongbao = "";
         switch (v.getId()) {
             case R.id.imagebuttonTrue:
-
-                thongbao = mIsTrue ? "Chinh xac" : "Sai roi";
+                thongbao = kiemtra ? "chinh xac" : "sai roi";
                 Toast.makeText(this, thongbao, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.imagebuttonFalse:
 
-                thongbao = !mIsTrue ? "Chinh xac" : "Sai roi";
+                thongbao = !kiemtra ? "Chinh xac" : "Sai roi";
                 Toast.makeText(this, thongbao, Toast.LENGTH_SHORT).show();
                 break;
         }

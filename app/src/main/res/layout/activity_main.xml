@@ -50,14 +50,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textviewKetqua"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="= 6"
-            android:textColor="#ffff"
-            android:textSize="100sp"
-            android:textStyle="bold" />
+
     </LinearLayout>
 
 
